@@ -1,2 +1,6 @@
 # cinemaProject
-First group project for ICP
+First group project for 
+
+
+trying to look at changes
+
