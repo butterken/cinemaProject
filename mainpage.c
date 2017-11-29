@@ -5,23 +5,25 @@ void add();
 // display()
 void display()  
 {
-
+	char dataWhole[50]; // array for data inside the saved file 
+	
+	
 	FILE *outFile;
 	outFile = fopen("movie.txt", "r");
 	
 	
-	char dataWhole[50];
-	int num;
-	// file checking 
+
 	
+	// start file checking 
 	if (outFile == NULL)
 	{
 	printf("\nFile does not exist");
 	printf("\nFile was not succesfully opened\n");
 	exit(1);			//resides in stdlib.h
 	}
+	// end file checking 
 	printf("File was succesfully opened!\n\n");
-	// reading the file now
+	// start reading the file
 	while(!feof(outFile))
 	{
 		fgets(dataWhole, 50, outFile);
