@@ -1,6 +1,79 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
+void login()
+{
+		const int MAXSIZE = 16;
+	
+	char username[MAXSIZE];
+	char password[MAXSIZE];
+	
+	char ch;
+	int characterPosition = 0;
+	int quit = 0;
+	
+
+	
+	 //start creating user log in
+	do{
+		fflush(stdin);
+		printf("\n\n\n\n\n\n\n\n\n");
+		printf("\t\t\t\t\t\tUsername: ");
+		gets(username);
+		
+	printf("\t\t\t\t\t\tPassword: ");
+	
+	while(1)
+	{
+		ch = getch(); // gets characters without displaying them on the screen. And getch() returns the ASCII values of each char.
+	
+		if (ch == 13) 					 // 13 is the ASCII value for "enter" 
+	{
+		break;
+	}else if(ch == 8)  // 8 is the ASCII value of "backspace"
+	{	if (characterPosition >0)
+	{characterPosition--;
+		password[characterPosition] == '\0';
+		printf("\b \b");
+	}
+		
+	}else if (ch == 32 || ch == 9) // when user hits "space" or "tab"
+	{
+		continue;
+	}else 
+	{
+		if (characterPosition < MAXSIZE)
+		{
+			password[characterPosition] = ch;
+			characterPosition++;
+			printf("*");
+			
+		}
+	}
+}
+	password[characterPosition] == '\0';
+	
+	printf("\n");
+	if (strlen(password) == 0)
+	{
+		printf("No password entered");
+	}
+		// checking condition if user can login or not
+	if ( strcmp(username, "abc") == 0 && strcmp(password, "123") == 0)
+	{
+		printf("You have succesfully entered!");
+		quit = 1;
+	
+		} else 
+		{	printf("\n\n");
+			printf("\t\t\t\tYour username or password is invalid, please try again.\n");
+			
+}
+	}while(!quit);
+	
+	
+}
 void add();
 // display()
 void display()  
@@ -35,19 +108,20 @@ void display()
 int main()
 {
 	
-	
+	login();
+	system("cls");  // clears the screen after the login 
 	char option;
-		printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+		printf("\t\t\t\t\t\t\t\t\t\t\t");
 	
 	printf("\n\t*** Welcome to HK Grand SPACE Movie Ticketing Management System 2017 ***\n");
 	printf("\n\t*** This system is developed by CCIT4020 class No. CL-06 Group No.___ ***\n");
-	printf("\n <---Basic functions--->");
+	printf("\n <---Basic functions--->\n");
 	printf("\n 1. Add New movie Ticketing Record(s):");
 	printf("\n 2. Display All Movie Ticketing Records:");	             
 	printf("\n 3. Modify Movie Ticketing Record(s):");	           
 	printf("\n 4. Search Movie Ticketing Record(s):");	          
-	printf("\n 5. Delete Movie Ticketing Record(s):");	
-	printf("\nWhat is your option (1-5)? [q for quit]");
+	printf("\n 5. Delete Movie Ticketing Record(s):\n\n");	
+	printf("\nWhat is your option (1-5)? [q for quit]\n");
 	printf("\nMy Option: ");
 	scanf("%c",&option);	//getting option from user
 	
