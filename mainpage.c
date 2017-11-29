@@ -2,9 +2,11 @@
 #include <string.h>
 #include <stdlib.h>
 void add();
-void callMainPage(int username)
+int main()
 {
-		char option;
+	
+	
+	char option;
 		printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	
 	printf("\n\t*** Welcome to HK Grand SPACE Movie Ticketing Management System 2017 ***\n");
@@ -45,47 +47,8 @@ void callMainPage(int username)
 			break;
 	}
 	
-}
-int main()
-{
-	#define MAXSIZE 15
-	
-	char username[MAXSIZE];
-	char password[MAXSIZE];
-	
-	int quit = 0;
-	
-	// start Logo
 
-	// End logo
 	
-	// start creating user log in
-	do{
-		fflush(stdin);
-		printf("\n\n\n\n\n\n\n\n\n");
-	printf("\t\t\t\t\t\tUsername: ");
-		gets(username);
-	printf("\t\t\t\t\t\tPassword: ");
-		gets(password);
-		
-	if ( strcmp(username, "abc") == 0 && strcmp(password, "123") == 0)
-	{
-		callMainPage(username);
-		quit = 1;
-	
-		} else 
-		{	printf("\n\n");
-			printf("\t\t\t\tYour username or password is invalid, please try again.\n");
-}
-	}while(!quit);
-	
-	
-		
-	
-	
-	// END of user login
-	
-	// when both is true callthe main page function.
 	
 	
 	return 0;
