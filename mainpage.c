@@ -2,6 +2,34 @@
 #include <string.h>
 #include <stdlib.h>
 void add();
+// display()
+void display()  
+{
+
+	FILE *outFile;
+	outFile = fopen("movie.txt", "r");
+	
+	
+	char dataWhole[50];
+	int num;
+	// file checking 
+	
+	if (outFile == NULL)
+	{
+	printf("\nFile does not exist");
+	printf("\nFile was not succesfully opened\n");
+	exit(1);			//resides in stdlib.h
+	}
+	printf("File was succesfully opened!\n\n");
+	// reading the file now
+	while(!feof(outFile))
+	{
+		fgets(dataWhole, 50, outFile);
+		printf("%s", dataWhole);
+	}
+	return;
+
+}
 int main()
 {
 	
@@ -26,10 +54,10 @@ int main()
 		case '1':
 			add();	//Calling method for add record(s)
 			break;
-		/*case '2':
-			display();
+		case '2':
+			display(); // calling display()
 			break;
-		case '3':
+		/*case '3':
 			modify();
 			break;
 		case '4':
@@ -56,16 +84,18 @@ int main()
 
 void add()
 {
-	char content[50];	//String variable to store user's input
+	#define MAXNUMITEM 50
+	#define MAXNUMCHAR 50
+	char content[MAXNUMITEM];	//String variable to store user's input
 	
+	char customerName[MAXNUMCHAR]; //String variable to store confirmed Name of Customer
+	char movieName[MAXNUMCHAR]; //String variable to store confirmed Name of Movie
+	char ticketType[MAXNUMCHAR]; //String variable to store confirmed Ticket Type
 	char bookingNo[10]; //String variable to store confirmed Movie Booking Number
-	char customerName[30]; //String variable to store confirmed Name of Customer
-	char movieName[30]; //String variable to store confirmed Name of Movie
 	char movieSchedule[10]; //String variable to store confirmed Movie Schedule
 	char time[4]; //String variable to store confirmed Time
 	char guestNum[3]; //String variable to store confirmed Number of Guests
 	char houseNo[2]; //String variable to store confirmed House Number
-	char ticketType[20]; //String variable to store confirmed Ticket Type
 	char totalFee[10]; //String variable to store confirmed Total Fee
 	
 	char n;	//char for user's answer of add another record
@@ -146,7 +176,7 @@ void add()
 		printf("totalFee(e.g.140.0):");
 		puts(totalFee);
 		
-		FILE *f = fopen("record.txt", "a");	//opening record.txt for adding record
+		FILE *f = fopen("movie.txt", "a");	//opening record.txt for adding record
 		
 		fprintf(f, "%s\n", bookingNo);	//write Movie Booking Number to file
 		fprintf(f, "%s\n", customerName);	//write Name of Customer to file
