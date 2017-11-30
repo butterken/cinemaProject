@@ -203,7 +203,7 @@ void del()
 		{
 		fgets(ch,40,infile);
 		fputs(ch, outfile2);
-		fputs("_\n",outfile); /*leave it blank to prevent bug*/
+		fputs("-deleted-",outfile); /*leave it blank to prevent bug*/
 		}
 /**/
 		for(;con != EOF;) /*transfer the remaining record*/
@@ -213,6 +213,8 @@ void del()
 		fputc(con, outfile);
 		} 
 	fclose(infile);
+	fclose(outfile);
+        fclose(outfile2);
 
 		
 		printf("Are you confirm to delete the record?<y or n>: "); /*confirm the delete of file*/
@@ -220,16 +222,15 @@ void del()
 		scanf("%c",&n);
 		do{
 		switch(n)
-		{case 'y' : 
-		 case 'Y' :
+		{case 'y' : case 'Y' :
             infile = fopen("movie.txt","w"); /*open a new file and overwrite the old one*/
-             while (0) {
-             fseek(outfile,0l,SEEK_SET);
+	    outfile = fopen("del.txt","r");
+             while (1) {
              con = fgetc(outfile); /*transfer the record back to the file*/
              if (con == EOF)
              break;
              else
-             putc(con, infile);
+             fputc(con, infile);
    }
 		case 'n' :
 		case 'N' :
@@ -240,7 +241,7 @@ void del()
 	    	 fflush(stdin);
 	    	 scanf("%c",&n);
 		}
-	}while(0);
+	}while(1);
 	
 		printf("Do you want to remove another customer's movie ticket booking record?<y or n>'");
 		fflush(stdin);
@@ -263,7 +264,7 @@ void del()
 		        fflush(stdin);
 				scanf("%c",&n);
 		}
-	}while(0);
+	}while(1);
 		
 		  }while(next!=0);	
 	fclose(infile);
