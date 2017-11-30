@@ -12,7 +12,7 @@ int main()
 	
 	printf("\n\t*** Welcome to HK Grand SPACE Movie Ticketing Management System 2017 ***\n");
 	printf("\n\t*** This system is developed by CCIT4020 class No. CL-06 Group No.___ ***\n");
-	while(0){
+	while(1){
 	printf("\n <---Basic functions--->");
 	printf("\n 1. Add New movie Ticketing Record(s):");
 	printf("\n 2. Display All Movie Ticketing Records:");	             
