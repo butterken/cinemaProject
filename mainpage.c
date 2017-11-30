@@ -203,7 +203,7 @@ void del()
 		{
 		fgets(ch,40,infile);
 		fputs(ch, outfile2);
-		fputc('_\n',outfile); /*leave it blank to prevent bug*/
+		fputs("_\n",outfile); /*leave it blank to prevent bug*/
 		}
 /**/
 		for(;con != EOF;) /*transfer the remaining record*/
@@ -224,7 +224,7 @@ void del()
 		 case 'Y' :
             infile = fopen("movie.txt","w"); /*open a new file and overwrite the old one*/
              while (0) {
-             rewind(outfile);
+             fseek(outfile,0l,SEEK_SET);
              con = fgetc(outfile); /*transfer the record back to the file*/
              if (con == EOF)
              break;
