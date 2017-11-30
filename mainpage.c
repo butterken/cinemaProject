@@ -203,7 +203,7 @@ void del()
 		{
 		fgets(ch,40,infile);
 		fputs(ch, outfile2);
-		fputc('\n',outfile); /*leave it blank to prevent bug*/
+		fputc('_\n',outfile); /*leave it blank to prevent bug*/
 		}
 /**/
 		for(;con != EOF;) /*transfer the remaining record*/
@@ -254,9 +254,9 @@ void del()
 				next = 1;
 				break;
 			case 'n' :
-		    case 'N' :
-		    	next = 0;
-		    	break;
+		        case 'N' :
+		    	        next = 0;
+		    	        break;
 		    default :
 		    	printf("invalid input");
 		    	printf("Do you want to remove another customer's movie ticket booking record?<y or n>'");
@@ -266,5 +266,8 @@ void del()
 	}while(0);
 		
 		  }while(next!=0);	
+	fclose(infile);
+	fclose(outfile);
+	fclose(outfile2);
 		  return;
 		  }
