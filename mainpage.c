@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 void add();
+void del();
 int main()
 {
 	
@@ -11,6 +12,7 @@ int main()
 	
 	printf("\n\t*** Welcome to HK Grand SPACE Movie Ticketing Management System 2017 ***\n");
 	printf("\n\t*** This system is developed by CCIT4020 class No. CL-06 Group No.___ ***\n");
+	while(0){
 	printf("\n <---Basic functions--->");
 	printf("\n 1. Add New movie Ticketing Record(s):");
 	printf("\n 2. Display All Movie Ticketing Records:");	             
@@ -25,26 +27,21 @@ int main()
 	{
 		case '1':
 			add();	//Calling method for add record(s)
-			break;
-		/*case '2':
+                case '2':
 			display();
-			break;
 		case '3':
 			modify();
-			break;
 		case '4':
 			search();
-			break;
 		case '5':
-			del();
-			break;*/
+			del(); /*calling the delete function*/
 		case 'Q': case 'q':
 			printf("Exiting system...");
 			exit(1);
 			break;
 		default:
-			printf("Invaild input, please input integer (1-5)");
-			break;
+			printf("Invaild input!");
+	}
 	}
 	
 
