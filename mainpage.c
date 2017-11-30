@@ -174,7 +174,7 @@ void del()
 	FILE *infile, *outfile, *outfile2;
 	infile = fopen("movie.txt","r"); /*open text file for reading*/
 	outfile = fopen("del.txt","w"); /*create text file for transfer the data that is needed*/
-	outfile2 = fopen("rubbish.txt","w"); /*create text file to store the deleted record*/
+	outfile2 = fopen("rubbish.txt","a"); /*create text file to store the deleted record*/
 	
 	if (infile == NULL)  /*check the file is exist or not*/
 	{
