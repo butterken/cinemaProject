@@ -62,7 +62,7 @@ void del()
 	if (infile == NULL)  /*check the file is exist or not*/
 	{
 		printf("\nFile Lost!!! ");
-		printf("\nPlease find adminstor to help you fix the problem");
+		printf("\nPlease find administrator to help you fix the problem");
 		exit(1);
 	}
 
