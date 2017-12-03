@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 void add();
+void del();
 int main()
 {
 	
@@ -36,7 +37,7 @@ int main()
 			search();
 			break;
 		case '5':
-			deleteRecord();
+			del();
 			break;*/
 		case 'Q': case 'q':
 			printf("Exiting system...");
@@ -169,3 +170,127 @@ void add()
 	
 	return;
 }
+
+void del()
+{   int next=1;
+		do{
+	char ch[40],con,n;
+	int del, delno,i;	
+	FILE *infile, *outfile, *outfile2;
+	infile = fopen("movie.txt","r");
+	outfile = fopen("del.txt","w");
+	outfile2 = fopen("deleted_record.txt","a");
+	
+	if (infile == NULL)  /*check the file is exist or not*/
+	{
+		printf("\nFile Lost!!! ");
+		printf("\nPlease find adminstor to help you fix the problem");
+		fflush(stdin);
+		exit(1);
+	}
+    printf("Please enter the movie booking number that you want to delete<1001-1050>:"); /*ask for input the record that needed for delete*/
+    scanf("%d",&del);
+    while(del<1001 || del>1050)  /*input check*/
+    {
+    	printf("invaid movie booking number, please type again<1001-1050>:");
+    	fflush(stdin);
+    	scanf("%d",&del);   /*retype if invalid*/
+	}
+	
+			printf("Are you confirm to delete record #%d ?<y or n>:",del);
+	    fflush(stdin);
+		scanf("%c",&n);
+		
+		i=1;
+		do{
+		
+		switch(n)
+		{
+		 case 'y' : 
+		 case 'Y' :
+		delno = (del-1000)*10 - 10;	
+		for(i=0;i<delno;i++)
+			{	
+			fgets(ch,40,infile);
+		fputs(ch, outfile);
+			}		
+/**/
+		for(i=0;i<9;i++)
+		{
+		fgets(ch,40,infile);
+		fputs(ch, outfile2);
+		fputs("-deleted-\n",outfile);
+		}
+		fputs("\n",outfile2);
+/**/
+		while(1)
+		{
+			con=fgetc(infile);
+			if(con==EOF)
+			break;
+			else
+			{	
+		fputc(con, outfile);
+			}
+	
+		} 
+        	fclose(infile);
+        	fclose(outfile);
+            fclose(outfile2);
+            
+	        remove("movie.txt");
+	        rename("del.txt","movie.txt");
+	        i=0;
+	        break;
+			 
+		case 'n' :
+		case 'N' :
+			remove("del.txt");
+			i=0;
+		     break;
+		default :
+			printf("invalid input!");
+			printf("Are you confirm to delete the record #%d ?<y or n>:",del);
+	        fflush(stdin);
+	    	scanf("%c",&n);
+	    	i=1;
+	    	break;
+		     
+		}
+}while(i!=0);
+	
+
+		
+
+	
+		printf("Do you want to remove another customer's movie ticket booking record?<y or n>:");
+		fflush(stdin);
+		scanf("%c",&n);
+		i=1;
+		do{
+		
+		switch(n)
+		{
+			case 'y' :
+			case 'Y' :
+				next = 1;
+				i=0;
+				break;
+			case 'n' :
+		    case 'N' :
+		    	next = 0;
+		    	i=0;
+		    	break;
+		    default :
+		    	printf("invalid input");
+		    	printf("\nDo you want to remove another customer's movie ticket booking record?<y or n>:");
+		        fflush(stdin);
+				scanf("%c",&n);
+				i=1;
+				break;
+		}
+	}while(i!=0);
+		
+		  }while(next!=0);	
+		  return;
+		  }
